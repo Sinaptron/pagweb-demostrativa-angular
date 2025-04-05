@@ -1,0 +1,72 @@
+se intenta pasr est web a anghula
+esta en learnin / borrador pg web /x machote pag web respons 1
+
+
+
+PROYECTO SE EJECUTA CON EL COMANDO: ng serve
+para detener servidor: ctrl + c, y volver a ejecutar: ng serve
+########################
+
+pasos para instalacion y ejecucion
+============================
+Abre terminal en la raíz del proyecto.
+
+Comando: ng new angular-modern-website
+a las preguntas; Selecciona:
+✔️ Would you like to add Angular routing? → No
+✔️ Which stylesheet format would you like to use? → CSS
+
+accesar a la carpeta creada:
+>>> cd angular-modern-website
+
+Comando >>> npm install >>> para instalar Angular.
+
+verificar tener estos archivos, si no , crearlos:
+🗂️ Ruta: src/app/app.component.html
+🗂️ Ruta: src/app/app.component.ts
+🗂️ Ruta: src/app/app.component.css
+🗂️ imagenes en: carpeta > src/assets/img 
+(corroborar la ruta de imagenes en archivo: src/app/app.component.html )
+
+Luego corre ng serve para iniciar el servidor.
+
+###############################
+FAQs
+
+Al ejecutar ng serve........ 
+✅ "Workspace extension with invalid name (defaultProject) found"
+indica que el archivo angular.json no está bien estructurado según el esquema que Angular espera.
+
+✅ "Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)?"
+=== NO: Si tu objetivo es una web sencilla, moderna y responsive (sin SEO avanzado o prerenderizado): frontend estandar
+=== SI: si vas a hacer una app con mucho contenido dinámico y necesitas mejor SEO (como blogs, tiendas, etc.) O Planeas desplegar en servidores como Firebase Functions, Node.js con Express o similares.
+y ya sabes manejar conceptos de SSR y SSG (esto agrega más complejidad).
+
+✅ "Would you like to share pseudonymous usage data about this project with the Angular Team at Google?"
+Te están preguntando si aceptas enviar datos anónimos de uso del CLI (como qué comandos usas, frecuencia, etc.) para ayudar a mejorar Angular.
+=== Si: si quieres colaborar con estadísticas anónimas
+=== NO: Si prefieres más privacidad y simplicidad; Así la instalación será más limpia y sin conexión con Google Analytics.
+#######
+Si más adelante cambias de opinión, puedes activarlo o desactivarlo con este comando:
+ng analytics enable     # Para activar
+ng analytics disable    # Para desactivar
+#######
+
+###############################
+
+###############################
+datos:
+Diferencia entre los archivos index.html y app.component.html:
+src/index.html:
+
+Es el archivo principal de la aplicación.
+
+Angular lo utiliza como punto de entrada inicial, es donde se incluye el <app-root></app-root> (el componente principal de tu aplicación) y los recursos globales como el <link> para estilos o las dependencias externas.
+
+No es donde agregarías el contenido principal (como la galería de imágenes), solo enlaces generales.
+
+src/app/app.component.html:
+
+Este es el archivo donde defines el contenido de tu aplicación, es el componente principal (AppComponent).
+
+Es aquí donde deberías agregar el contenido como la galería de imágenes, los formularios de contacto, etc.

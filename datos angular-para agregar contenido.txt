@@ -1,0 +1,203 @@
+✅  CAMBIOS O ACTUALIZACIONES DE CONTENIDO:
+🆕 IMAGENES:
+Coloca las nuevas imágenes en la carpeta src/assets/img/
+Si se crea nueva subcarpeta dentro de img (por ejemplo, src/assets/img/galeria/), pon las imágenes en esa subcarpeta.
+
+REFERENCIARLAS EN: app.component.html
+EJEMPLO:
+  <div class="images">
+    <img src="assets/img/img1.jpg" alt="Imagen 1">
+    <img src="assets/img/galeria/imagen4.jpg" alt="Imagen 4">
+  </div>
+
+🆕 Agregar Nueva SECCION
+En archivo app.component.html (o el archivo del componente donde quieras agregar la nueva sección).
+Añade el HTML necesario para la nueva sección, como un título, subtítulo, párrafos, imágenes, etc.
+EJEMPLO:
+<section class="testimonials">
+  <h2>Testimonios</h2>
+  <div class="testimonial">
+    <p>"Este sitio web ha sido increíble para mi negocio."</p>
+  </div>
+</section>
+
+🆕 Estilizar la Nueva Sección en CSS:
+Dirígete al archivo styles.css (o app.component.css si solo quieres que los estilos apliquen a ese componente).
+Agrega las reglas CSS para dar formato y diseño a la nueva sección.
+
+Si tienes ng serve corriendo, los cambios deberían reflejarse automáticamente en el navegador.
+Si no, puedes detener el servidor (Ctrl + C) y luego reiniciarlo con ng serve para ver los cambios.
+
+###############################
+✅   agregar una nueva página en Angular
+
+🆕  1. Generar un Nuevo Componente para la Página
+Primero, necesitas crear un nuevo componente para la página que quieres agregar.
+
+Abre la terminal y navega a tu directorio de proyecto.
+Usa el comando ng generate component para crear un nuevo componente. Supongamos que quieres agregar una página llamada "acerca de" (about).
+ng generate component about
+
+Esto generará los siguientes archivos dentro de tu carpeta src/app/about:
+
+src/app/about/
+  ├── about.component.ts
+  ├── about.component.html
+  ├── about.component.css
+  └── about.component.spec.ts
+
+🆕  2. Configurar el Enrutador de Angular
+
+Ahora necesitas configurar el enrutador para que tu nueva página sea accesible a través de una URL.
+Abrir el archivo app-routing.module.ts: Este archivo contiene la configuración del enrutador de tu aplicación. Aquí es donde defines las rutas.
+Agregar la Ruta para la Nueva Página: Dentro de este archivo, debes agregar una nueva entrada en el array de rutas (Routes). La ruta debe tener la URL y el componente correspondiente.
+Supongamos que la URL de tu nueva página es /about, y el componente es AboutComponent. Tendrías que hacer lo siguiente:
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';  // Asegúrate de importar el nuevo componente
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },  // Página de inicio (ya existente)
+  { path: 'about', component: AboutComponent },  // Nueva página de "acerca de"
+  // Puedes agregar más rutas aquí
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+Aquí:
+path: 'about': define la URL que usará el navegador para acceder a esta página (en este caso, http://localhost:4200/about).
+component: AboutComponent: especifica qué componente se mostrará cuando se acceda a esta URL.
+
+3. Actualizar el archivo app.module.ts: Asegúrate de que el módulo de enrutamiento (AppRoutingModule) esté importado en el archivo app.module.ts para que el enrutador funcione correctamente.
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module'; // Asegúrate de importar AppRoutingModule
+import { AboutComponent } from './about/about.component';  // Asegúrate de importar AboutComponent
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AboutComponent  // Declarar el nuevo componente
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule  // Asegúrate de importar AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+🆕  3. Agregar un Enlace de Navegación a la Nueva Página
+Una vez que hayas configurado el enrutador, es probable que quieras agregar un enlace de navegación para que los usuarios puedan acceder a esta nueva página.
+
+Actualizar la Barra de Navegación (Generalmente en app.component.html): Si tienes una barra de navegación (navbar), abre app.component.html o el archivo HTML donde esté la barra de navegación y agrega un enlace a la nueva página.
+
+Ejemplo de un enlace de navegación:
+<nav>
+  <ul>
+    <li><a routerLink="/">Inicio</a></li>
+    <li><a routerLink="/about">Acerca de</a></li>  <!-- Enlace a la nueva página -->
+  </ul>
+</nav>
+
+🆕  4. Crear el Contenido de la Nueva Página
+Ahora que has creado el componente AboutComponent, abre el archivo about.component.html y agrega el contenido que desees para esta página.
+
+Ejemplo de contenido para la página de "Acerca de":
+
+<h1>Acerca de Nosotros</h1>
+<p>Bienvenido a nuestra página de "Acerca de". Aquí encontrarás más información sobre nuestra empresa.</p>
+
+Si deseas agregar más secciones o personalizar el estilo, puedes hacerlo en el archivo about.component.css.
+
+🆕  5. Verificar los Cambios en el Navegador
+Guarda todos los archivos.
+
+Asegúrate de que el servidor de desarrollo esté corriendo (ng serve).
+
+Abre tu navegador y navega a http://localhost:4200/about para ver la nueva página.
+
+🆕  RECAPITULACION:
+Resumen de Archivos y Cambios
+Generar un Componente para la Página:
+
+Comando: ng generate component about.
+Se crearán los archivos: about.component.ts, about.component.html, about.component.css, etc.
+
+Configurar el Enrutador:
+app-routing.module.ts: Añadir la ruta de la nueva página.
+
+app.module.ts: Asegúrate de que AboutComponent esté importado y declarado.
+
+Agregar el Enlace de Navegación:
+app.component.html: Agregar un enlace (<a routerLink="/about">Acerca de</a>) en la barra de navegación.
+
+Diseñar el Contenido de la Página:
+about.component.html: Agregar el contenido específico de la nueva página.
+
+Verificar:
+Ejecutar ng serve y verificar la nueva página en el navegador.
+
+
+🆕  AGREGAR SCRIPT AL PROYECTO
+
+Para agregar un archivo script.js en un proyecto de página web con Angular (usando HTML y CSS), el proceso no es igual que en proyectos estáticos. Angular usa TypeScript y una arquitectura modular, así que se recomienda evitar usar archivos .js sueltos. Sin embargo, si necesitas incluir un archivo script.js por alguna razón específica (como una librería externa o un comportamiento personalizado), puedes hacerlo de forma controlada.
+
+✅ 1. Coloca el archivo script.js
+Guárdalo en la carpeta src/assets/js/ para mantener el orden del proyecto.
+
+Ruta sugerida:
+
+/src/assets/js/script.js
+
+✅ 2. Declara el script en el archivo angular.json
+Ubica el archivo angular.json en la raíz del proyecto. Busca la sección build > options > scripts y agrega la ruta a tu archivo.
+
+"scripts": [
+  "src/assets/js/script.js"
+]
+
+EJEMPLO
+    "options": {
+      "scripts": [
+        "src/assets/js/script.js"
+      ],
+      ...
+    }
+
+✅ 3. Usa el script en tu HTML o componente
+Una vez agregado, el script ya está disponible globalmente. Si tu script.js depende del DOM (como jQuery o funciones de animación), usa el hook ngAfterViewInit() en el componente.
+
+import { AfterViewInit, Component } from '@angular/core';
+
+declare var miFuncionJS: any; // ejemplo de función global en script.js
+
+@Component({
+  selector: 'app-ejemplo',
+  templateUrl: './ejemplo.component.html',
+})
+export class EjemploComponent implements AfterViewInit {
+  ngAfterViewInit() {
+    miFuncionJS(); // Llamar función de script.js después de renderizar la vista
+  }
+}    
+
+✅ 4. Ejecuta el proyecto para probar
+
+ng serve
+
+7. 🔁 Reinicia el servidor
+Después de modificar angular.json, siempre corre:
+ng serve --open
+
+
+🔒 Nota importante
+Si estás usando funciones que manipulan directamente el DOM, Angular recomienda usar ElementRef o Renderer2, o mejor aún, integrar la lógica al propio framework en lugar de scripts externos.
