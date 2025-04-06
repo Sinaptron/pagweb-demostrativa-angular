@@ -70,3 +70,154 @@ src/app/app.component.html:
 Este es el archivo donde defines el contenido de tu aplicación, es el componente principal (AppComponent).
 
 Es aquí donde deberías agregar el contenido como la galería de imágenes, los formularios de contacto, etc.
+
+
+
+
+
+
+
+
+
+
+
+Perfecto, ya tienes el HTML y los estilos para el menú hamburguesa. Ahora, como estás usando Angular, lo ideal es integrar la lógica del menú con un poco de TypeScript y Angular bindings en lugar de puro JavaScript.
+
+🎯 Objetivo:
+Agregar funcionalidad al botón hamburguesa para que al hacer clic:
+
+muestre o oculte el menú (ul.nav-links)
+
+funcione correctamente en móviles
+
+
+✅ PASO 1: Agrega lógica en el componente Angular (ej. navbar.component.ts)
+🔧 PASO A: Crear el componente
+ng generate component navbar
+
+Este comando creará una carpeta src/app/navbar con estos archivos:
+
+navbar/
+├── navbar.component.ts       ← lógica
+├── navbar.component.html     ← HTML que ya tienes
+├── navbar.component.css      ← estilos
+├── navbar.component.spec.ts  ← (puedes ignorarlo si no haces tests)
+
+// navbar.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent {
+  isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+}
+
+✅ PASO 2: Modifica tu HTML para usar bindings Angular (navbar.component.html)
+🔧 PASO B: Copiar tu HTML
+Pega tu código HTML dentro de navbar.component.html. Por ejemplo:
+
+<header>
+  <nav class="navbar">
+    <div class="logo">Mi Web Pro</div>
+    
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a href="#home">Inicio</a></li>
+      <li><a href="#about">Sobre Nosotros</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#portfolio">Portafolio</a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+
+    <div class="hamburger" (click)="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </nav>
+</header>
+
+🔧 PASO C: Agrega la lógica a navbar.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent {
+  isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+}
+
+🔧 PASO D: Usa el componente en tu app
+Ve al archivo app.component.html (o donde quieras mostrar el navbar) y agrega:
+
+<app-navbar></app-navbar>
+
+
+✅ PASO 3: Añade CSS (si aún no lo tienes)
+Asegúrate de tener clases que muestren/oculten el menú con media queries. Un ejemplo:
+
+/* navbar.component.css */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background: #000;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: white;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+
+✅ Resultado:
+Al hacer clic en el menú hamburguesa, se mostrará u ocultará la lista de enlaces.
+
+La visibilidad es controlada por Angular (isMenuOpen).
+
+El estilo active se aplica dinámicamente con [class.active]="isMenuOpen".
+
+

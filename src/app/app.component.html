@@ -1,153 +1,39 @@
-<header>
-  <nav class="navbar">
-    <div class="logo">Mi Web Pro</div>
-    <ul class="nav-links">
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#about">Sobre Nosotros</a></li>
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#portfolio">Portafolio</a></li>
-        <li><a href="#team">Equipo</a></li>
-        <li><a href="#contact">Contacto</a></li>
-    </ul>
-    <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
+<nav class="navbar">
+  <div class="logo">MiSitio</div>
+  <div class="menu-toggle" (click)="toggleMenu()">☰</div>
+  <ul class="nav-links" [class.active]="menuActive">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Galería</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
 </nav>
+
+<header class="hero">
+  <h1>Bienvenido a Nuestra Web</h1>
+  <p>Una experiencia moderna y elegante</p>
 </header>
 
-<section id="home" class="hero">
-  <div class="hero-content">
-      <h1>Diseño y Desarrollo Web de Vanguardia</h1>
-      <p>Creando experiencias digitales únicas y funcionales</p>
-      <a href="#services" class="cta-btn">Descubre Nuestros Servicios</a>
+<section class="gallery">
+  <h2>Galería</h2>
+  <div class="images">
+    <img src="assets/img/img1.jpg" alt="Imagen 1">
+    <img src="assets/img/img2.jpg" alt="Imagen 2">
+    <img src="assets/img/img3.jpg" alt="Imagen 3">
+    <img src="assets/img/img1.jpg" alt="Imagen 1">
+    <img src="assets/img/img2.jpg" alt="Imagen 2">
   </div>
 </section>
 
-  <section id="about" class="about">
-      <div class="container">
-          <h2>Sobre Nosotros</h2>
-          <p>Somos una agencia de diseño y desarrollo web dedicada a llevar tu negocio al siguiente nivel con soluciones innovadoras y efectivas.</p>
-      </div>
-  </section>
-
-  <section id="services" class="services">
-      <div class="container">
-          <h2>Nuestros Servicios</h2>
-          <div class="service-cards">
-              <div class="service-card">
-                  <div class="icon"><i class="fas fa-code"></i></div>
-                  <h3>Desarrollo Web</h3>
-                  <p>Desarrollamos sitios web escalables y de alto rendimiento que cumplen con los estándares modernos.</p>
-              </div>
-              <div class="service-card">
-                  <div class="icon"><i class="fas fa-paint-brush"></i></div>
-                  <h3>Diseño UX/UI</h3>
-                  <p>Diseñamos interfaces de usuario atractivas y fáciles de usar que mejoran la experiencia del usuario.</p>
-              </div>
-              <div class="service-card">
-                  <div class="icon"><i class="fas fa-mobile-alt"></i></div>
-                  <h3>Desarrollo Móvil</h3>
-                  <p>Desarrollamos aplicaciones móviles nativas y multiplataforma que ofrecen una experiencia fluida.</p>
-              </div>
-              <div class="service-card">
-                  <div class="icon"><i class="fas fa-search"></i></div>
-                  <h3>SEO y Marketing Digital</h3>
-                  <p>Optimización para motores de búsqueda y estrategias de marketing digital que mejoran tu visibilidad en línea.</p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section id="portfolio" class="portfolio">
-      <div class="container">
-          <h2>Portafolio</h2>
-          <div class="portfolio-grid">
-              <div class="portfolio-item">
-                  <img src="../assets/images/fotografia1.png" alt="Proyecto 1">
-                  <div class="overlay">
-                      <div class="overlay-text">Proyecto 1</div>
-                  </div>
-              </div>
-              <div class="portfolio-item">
-                <img src="../assets/images/fotografia2.png" alt="Proyecto 2">
-                  <div class="overlay">
-                      <div class="overlay-text">Proyecto 2</div>
-                  </div>
-              </div>
-              <div class="portfolio-item">
-                <img src="../assets/images/fotografia3.png" alt="Proyecto 3">
-                  <div class="overlay">
-                      <div class="overlay-text">Proyecto 3</div>
-                  </div>
-              </div>
-              <div class="portfolio-item">
-                <img src="../assets/images/fotografia4.png" alt="Proyecto 4">
-                  <div class="overlay">
-                      <div class="overlay-text">Proyecto 4</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section id="team" class="team">
-      <div class="container">
-          <h2>Conoce a Nuestro Equipo</h2>
-          <div class="team-cards">
-              <div class="team-card">
-                  <img src="team1.jpg" alt="Miembro 1">
-                  <h3>Juan Pérez</h3>
-                  <p>Desarrollador Frontend</p>
-                  <div class="social-icons">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                      <a href="#"><i class="fab fa-github"></i></a>
-                      <a href="#"><i class="fab fa-twitter"></i></a>
-                  </div>
-              </div>
-              <div class="team-card">
-                  <img src="team2.jpg" alt="Miembro 2">
-                  <h3>María López</h3>
-                  <p>Diseñadora UX/UI</p>
-                  <div class="social-icons">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                      <a href="#"><i class="fab fa-dribbble"></i></a>
-                      <a href="#"><i class="fab fa-behance"></i></a>
-                  </div>
-              </div>
-              <div class="team-card">
-                  <img src="team3.jpg" alt="Miembro 3">
-                  <h3>Carlos García</h3>
-                  <p>Especialista en SEO</p>
-                  <div class="social-icons">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
-                      <a href="#"><i class="fab fa-instagram"></i></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section id="contact" class="contact">
-      <div class="container">
-          <h2>Contacto</h2>
-          <form action="#">
-              <label for="name">Nombre:</label>
-              <input type="text" id="name" name="name" required>
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-              <label for="message">Mensaje:</label>
-              <textarea id="message" name="message" required></textarea>
-              <button type="submit">Enviar</button>
-          </form>
-      </div>
-  </section>
-
+<section class="contact">
+  <h2>Contacto</h2>
+  <form>
+    <input type="text" placeholder="Nombre">
+    <input type="email" placeholder="Correo">
+    <textarea placeholder="Mensaje"></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
 
 <footer>
-  <p>&copy; 2024 MiWebPro. Todos los derechos reservados.</p>
+  <p>© 2025 MiSitio. Todos los derechos reservados.</p>
 </footer>
-
-<div class="overlay-bg"></div>
